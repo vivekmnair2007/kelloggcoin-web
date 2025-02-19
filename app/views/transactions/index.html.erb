@@ -2,7 +2,49 @@
 
 <!-- Step 1: List all transactions, starting with the ICO -->
 
-<!-- Step 2: Calculate and display the balances -->
+<table border="1">
+  <thead>
+    <tr>
+      <th>Transaction ID</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Amount (KC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.id %></td>
+        <% if transaction.from_user %>
+          <td><%= transaction.from_user.name %></td>
+        <% else %>
+          <td><em>Initial Coin Offering</em></td>
+        <% end %>
+        <td><%= transaction.to_user.name %></td>
+        <td><%= transaction.amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Balances</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Balance (KC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @balances.each do |user, balance| %>
+      <tr>
+        <td><%= user %></td>
+        <td><%= balance %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <!-- 
 Expected balances:
